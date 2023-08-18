@@ -2,9 +2,10 @@
 
 -- PROJETO HEALTH CLINIC
 
-
+-- USANDO O BD
 USE Health_Clinic_Manha
 
+-- INSERINDO OS DADOS EM DETERMINADA TABELA
 
 INSERT INTO TipoUsuario(Titulo) VALUES ('Administrador'),('Medico'),('Paciente')
 

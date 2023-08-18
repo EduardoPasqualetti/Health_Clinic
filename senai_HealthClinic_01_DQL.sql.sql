@@ -2,10 +2,11 @@
 
 -- PROJETO HEALTH CLINIC
 
-
+-- USANDO O BD
 USE  Health_Clinic_Manha
 
 
+-- LISTAR OS DADOS PEDIDO PELO PROFESSOR:
 
 SELECT
 	Consulta.IdConsulta,
@@ -49,14 +50,14 @@ RETURN
     WHERE Especialidade.Titulo = @especialidadeBuscada
 );
 
-
+-- EXECUTAR A FUNCAO
 SELECT Medico
 FROM dbo.BuscarMedicos('Dermatologista');
 
 
 
 
--- PROCEDURE PARA 
+-- PROCEDURE PARA RETORNAR AS IDADES DOS PACIENTES
 
 CREATE PROCEDURE IdadePacientes
 AS
@@ -72,5 +73,6 @@ BEGIN
 	join Paciente on Paciente.IdUsuario = Usuario.IdUsuario
 END;
 
+-- EXECUTAR A PROCEDURE
 EXEC IdadePacientes
 
