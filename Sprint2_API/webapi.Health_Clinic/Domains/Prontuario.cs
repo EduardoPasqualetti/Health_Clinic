@@ -7,7 +7,7 @@ namespace webapi.Health_Clinic.Domains
     public class Prontuario
     {
         [Key]
-        public Guid IdProntuario { get; set; } = Guid.NewGuid();
+        public Guid IdProntuario { get; set; } 
 
         [Column(TypeName ="TEXT")]
         [Required(ErrorMessage = "Prontuário da consulta obrigatório!")]

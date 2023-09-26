@@ -7,7 +7,7 @@ namespace webapi.Health_Clinic.Domains
     public class MedicoEspecialidade
     {
         [Key]
-        public Guid IdMedicoEspecialidade { get; set; } = Guid.NewGuid();
+        public Guid IdMedicoEspecialidade { get; set; }
 
 
         [Required(ErrorMessage = "Medico obrigatório!")]

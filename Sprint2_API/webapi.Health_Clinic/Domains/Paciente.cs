@@ -7,7 +7,7 @@ namespace webapi.Health_Clinic.Domains
     public class Paciente
     {
         [Key]
-        public Guid IdPaciente { get; set; } = Guid.NewGuid();
+        public Guid IdPaciente { get; set; }
 
         [Column(TypeName = "VARCHAR(100)")]
         [Required(ErrorMessage = "Nome do Paciente obrigatório!")]

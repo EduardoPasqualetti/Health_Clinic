@@ -9,7 +9,7 @@ namespace webapi.Health_Clinic.Domains
     public class Clinica
     {
         [Key]
-        public Guid IdInstituicao { get; set; } = Guid.NewGuid();
+        public Guid IdInstituicao { get; set; }
 
 
         [Column(TypeName = "CHAR(14)")]

@@ -7,7 +7,7 @@ namespace webapi.Health_Clinic.Domains
     public class Consulta
     {
         [Key]
-        public Guid IdConsulta { get; set; } = Guid.NewGuid();
+        public Guid IdConsulta { get; set; } 
 
 
         [Column(TypeName = "DATE")]

@@ -7,7 +7,7 @@ namespace webapi.Health_Clinic.Domains
     public class Especialidade
     {
         [Key]
-        public Guid IdEspecialidade { get; set; } = Guid.NewGuid();
+        public Guid IdEspecialidade { get; set; }
 
 
         [Column(TypeName ="VARCHAR(100)")]

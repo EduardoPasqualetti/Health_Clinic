@@ -7,7 +7,7 @@ namespace webapi.Health_Clinic.Domains
     public class Comentario
     {
         [Key]
-        public Guid IdComentario { get; set; } = Guid.NewGuid();
+        public Guid IdComentario { get; set; } 
 
         [Column(TypeName = "TEXT")]
         [Required(ErrorMessage = "Inválido!")]
