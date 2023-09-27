@@ -1,28 +1,49 @@
-﻿using webapi.Health_Clinic.Domains;
+﻿using webapi.Health_Clinic.Contexts;
+using webapi.Health_Clinic.Domains;
 using webapi.Health_Clinic.Interfaces;
 
 namespace webapi.Health_Clinic.Repositories
 {
     public class ClinicaRepository : IClinicaRepository
     {
+        private readonly ClinicContext _Context;
+        public ClinicaRepository()
+        {
+            _Context = new ClinicContext();
+        }
         public void Atualizar(Guid id, Clinica clinica)
         {
-            throw new NotImplementedException();
+            Clinica buscada = _Context.Clinica.Find(id)!;
+            if (buscada != null)
+            {
+                buscada!.NomeFantasia = clinica.NomeFantasia;
+                buscada.RazaoSocial = clinica.RazaoSocial;
+                buscada.CNPJ = clinica.CNPJ;
+                buscada.HorarioAbertura = clinica.HorarioAbertura;
+                buscada.HorarioFechamento = clinica.HorarioFechamento;
+                buscada.Endereco = clinica.Endereco;
+            }
+            _Context.Clinica.Update(buscada);
+            _Context.SaveChanges();
         }
 
         public void Cadastrar(Clinica clinica)
         {
-            throw new NotImplementedException();
+            clinica.IdClinica = Guid.NewGuid();
+            _Context.Clinica.Add(clinica);
+            _Context.SaveChanges();
         }
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            Clinica buscada = _Context.Clinica.Find(id);
+            _Context.Clinica.Remove(buscada);
+            _Context.SaveChanges();
         }
 
         public List<Clinica> Listar()
         {
-            throw new NotImplementedException();
+            return _Context.Clinica.ToList();
         }
     }
 }

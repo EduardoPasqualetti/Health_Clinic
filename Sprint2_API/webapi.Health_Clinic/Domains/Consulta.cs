@@ -7,12 +7,15 @@ namespace webapi.Health_Clinic.Domains
     public class Consulta
     {
         [Key]
-        public Guid IdConsulta { get; set; } 
+        public Guid IdConsulta { get; set; }
 
+        [Column(TypeName ="DATETIME")]
+        [Required(ErrorMessage ="Data da Consulta obrigatoria")]
+        public DateTime Data { get; set; }
 
-        [Column(TypeName = "DATE")]
-        [Required(ErrorMessage ="Data e Horário da Consulta obrigatório!")]
-        public DateTime DataHorario { get; set; }
+        [Column(TypeName = "TIME")]
+        [Required(ErrorMessage ="Horário da Consulta obrigatório!")]
+        public TimeSpan Horario { get; set; }
 
 
         [Required(ErrorMessage = "Informe o Médico!")]

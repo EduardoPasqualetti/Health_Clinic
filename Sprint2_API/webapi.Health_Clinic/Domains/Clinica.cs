@@ -9,7 +9,7 @@ namespace webapi.Health_Clinic.Domains
     public class Clinica
     {
         [Key]
-        public Guid IdInstituicao { get; set; }
+        public Guid IdClinica { get; set; }
 
 
         [Column(TypeName = "CHAR(14)")]
@@ -31,13 +31,13 @@ namespace webapi.Health_Clinic.Domains
         [Required(ErrorMessage = "Razão Social da Clínica obrigatório!")]
         public string? RazaoSocial { get; set; }
 
-        [Column(TypeName ="DATETIME")]
+        [Column(TypeName ="TIME")]
         [Required(ErrorMessage = "Horário de Abertura da Clínica obrigatório!")]
-        public DateTime HorarioAbertura { get; set; }
+        public TimeSpan HorarioAbertura { get; set; }
 
-        [Column(TypeName ="DATETIME")]
+        [Column(TypeName ="TIME")]
         [Required(ErrorMessage = "Horário de Fechamento da Clínica obrigatório!")]
-        public DateTime HorarioFechamento { get; set; }
+        public TimeSpan HorarioFechamento { get; set; }
 
     }
 }

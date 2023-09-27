@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using webapi.Health_Clinic.Contexts;
 
@@ -11,9 +12,11 @@ using webapi.Health_Clinic.Contexts;
 namespace webapi.Health_Clinic.Migrations
 {
     [DbContext(typeof(ClinicContext))]
-    partial class ClinicContextModelSnapshot : ModelSnapshot
+    [Migration("20230927113422_BD_4")]
+    partial class BD_4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,11 +40,11 @@ namespace webapi.Health_Clinic.Migrations
                         .IsRequired()
                         .HasColumnType("VARCHAR(100)");
 
-                    b.Property<TimeSpan>("HorarioAbertura")
-                        .HasColumnType("TIME");
+                    b.Property<DateTime>("HorarioAbertura")
+                        .HasColumnType("DATETIME");
 
-                    b.Property<TimeSpan>("HorarioFechamento")
-                        .HasColumnType("TIME");
+                    b.Property<DateTime>("HorarioFechamento")
+                        .HasColumnType("DATETIME");
 
                     b.Property<string>("NomeFantasia")
                         .IsRequired()
@@ -88,11 +91,8 @@ namespace webapi.Health_Clinic.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("Data")
-                        .HasColumnType("DATETIME");
-
-                    b.Property<TimeSpan>("Horario")
-                        .HasColumnType("TIME");
+                    b.Property<DateTime>("DataHorario")
+                        .HasColumnType("DATE");
 
                     b.Property<Guid>("IdMedico")
                         .HasColumnType("uniqueidentifier");

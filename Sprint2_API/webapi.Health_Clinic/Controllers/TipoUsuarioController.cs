@@ -19,17 +19,17 @@ namespace webapi.Health_Clinic.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(TipoUsuario tp)
+        public IActionResult Post(TipoUsuario tipoUsuario)
         {
             try
             {
-                _tipoUsuario.Cadastrar(tp);
+                _tipoUsuario.Cadastrar(tipoUsuario);
                 return StatusCode(201);
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                return BadRequest(e.Message);
             }
         }
 
@@ -40,26 +40,27 @@ namespace webapi.Health_Clinic.Controllers
             {
                 return Ok(_tipoUsuario.Listar());
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                return BadRequest(e.Message);
             }
         }
 
         [HttpPut]
-        public IActionResult Put(Guid id,TipoUsuario tp)
+        public IActionResult Put(Guid id, TipoUsuario tipoUsuario)
         {
             try
             {
-                _tipoUsuario.Atualizar(id, tp);
+                _tipoUsuario.Atualizar(id, tipoUsuario);
                 return NoContent();
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                return BadRequest(e.Message);
             }
+
         }
 
         [HttpDelete]
@@ -70,10 +71,10 @@ namespace webapi.Health_Clinic.Controllers
                 _tipoUsuario.Deletar(id);
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                return BadRequest(e.Message);
             }
         }
     }

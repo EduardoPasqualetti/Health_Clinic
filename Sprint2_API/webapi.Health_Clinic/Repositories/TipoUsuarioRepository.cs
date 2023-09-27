@@ -13,7 +13,7 @@ namespace webapi.Health_Clinic.Repositories
         }
         public void Atualizar(Guid id, TipoUsuario tipoUsuario)
         {
-            TipoUsuario buscado = new TipoUsuario();
+            TipoUsuario buscado = _Context.TipoUsuario.Find(id)!;
             if (buscado != null)
             {
                 buscado.Titulo = tipoUsuario.Titulo;
@@ -33,6 +33,7 @@ namespace webapi.Health_Clinic.Repositories
         {
             TipoUsuario buscado = _Context.TipoUsuario.Find(id)!;
             _Context.TipoUsuario.Remove(buscado!);
+            _Context.SaveChanges();
         }
 
         public List<TipoUsuario> Listar()
