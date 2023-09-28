@@ -89,7 +89,7 @@ namespace webapi.Health_Clinic.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Data")
-                        .HasColumnType("DATETIME");
+                        .HasColumnType("DATE");
 
                     b.Property<TimeSpan>("Horario")
                         .HasColumnType("TIME");
@@ -142,6 +142,9 @@ namespace webapi.Health_Clinic.Migrations
                     b.Property<Guid>("IdClinica")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("IdEspecialidade")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("IdUsuario")
                         .HasColumnType("uniqueidentifier");
 
@@ -153,30 +156,11 @@ namespace webapi.Health_Clinic.Migrations
 
                     b.HasIndex("IdClinica");
 
+                    b.HasIndex("IdEspecialidade");
+
                     b.HasIndex("IdUsuario");
 
                     b.ToTable("Medico");
-                });
-
-            modelBuilder.Entity("webapi.Health_Clinic.Domains.MedicoEspecialidade", b =>
-                {
-                    b.Property<Guid>("IdMedicoEspecialidade")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("IdEspecialidade")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("IdMedico")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("IdMedicoEspecialidade");
-
-                    b.HasIndex("IdEspecialidade");
-
-                    b.HasIndex("IdMedico");
-
-                    b.ToTable("MedicoEspecialidade");
                 });
 
             modelBuilder.Entity("webapi.Health_Clinic.Domains.Paciente", b =>
@@ -301,7 +285,7 @@ namespace webapi.Health_Clinic.Migrations
 
             modelBuilder.Entity("webapi.Health_Clinic.Domains.Consulta", b =>
                 {
-                    b.HasOne("webapi.Health_Clinic.Domains.MedicoEspecialidade", "Medico")
+                    b.HasOne("webapi.Health_Clinic.Domains.Medico", "Medico")
                         .WithMany()
                         .HasForeignKey("IdMedico")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -334,6 +318,12 @@ namespace webapi.Health_Clinic.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("webapi.Health_Clinic.Domains.Especialidade", "Especialidade")
+                        .WithMany()
+                        .HasForeignKey("IdEspecialidade")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("webapi.Health_Clinic.Domains.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("IdUsuario")
@@ -342,26 +332,9 @@ namespace webapi.Health_Clinic.Migrations
 
                     b.Navigation("Clinica");
 
-                    b.Navigation("Usuario");
-                });
-
-            modelBuilder.Entity("webapi.Health_Clinic.Domains.MedicoEspecialidade", b =>
-                {
-                    b.HasOne("webapi.Health_Clinic.Domains.Especialidade", "Especialidade")
-                        .WithMany()
-                        .HasForeignKey("IdEspecialidade")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("webapi.Health_Clinic.Domains.Medico", "Medico")
-                        .WithMany()
-                        .HasForeignKey("IdMedico")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Especialidade");
 
-                    b.Navigation("Medico");
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("webapi.Health_Clinic.Domains.Paciente", b =>

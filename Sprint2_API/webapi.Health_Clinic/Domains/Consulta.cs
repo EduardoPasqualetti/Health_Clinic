@@ -9,8 +9,10 @@ namespace webapi.Health_Clinic.Domains
         [Key]
         public Guid IdConsulta { get; set; }
 
-        [Column(TypeName ="DATETIME")]
+        [Column(TypeName ="DATE")]
         [Required(ErrorMessage ="Data da Consulta obrigatoria")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Data { get; set; }
 
         [Column(TypeName = "TIME")]
@@ -22,7 +24,7 @@ namespace webapi.Health_Clinic.Domains
         public Guid IdMedico { get; set; }
 
         [ForeignKey(nameof(IdMedico))]
-        public MedicoEspecialidade? Medico { get; set; }
+        public Medico? Medico { get; set; }
 
 
         [Required(ErrorMessage = "Informe o Paciente!")]

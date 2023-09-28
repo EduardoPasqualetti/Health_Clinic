@@ -23,6 +23,7 @@ namespace webapi.Health_Clinic.Domains
 
         [Column(TypeName ="DATE")]
         [Required(ErrorMessage ="Data de Nascimento obrigatório!")]
+
         public DateTime DataDeNascimento { get; set; }
 
         [Required(ErrorMessage ="Informe o Usuario")]

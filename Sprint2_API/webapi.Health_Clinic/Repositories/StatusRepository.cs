@@ -14,22 +14,33 @@ namespace webapi.Health_Clinic.Repositories
         }
         public void Atualizar(Guid id, Status status)
         {
-            throw new NotImplementedException();
+            Status buscado = _Context.Status.Find(id)!;
+            if (buscado != null)
+            {
+                buscado.StatusConsulta = status.StatusConsulta;
+            }
+            _Context.Status.Update(buscado!);
+            _Context.SaveChanges();
         }
 
         public void Cadastrar(Status status)
         {
-            throw new NotImplementedException();
+            status.IdStatus = Guid.NewGuid();
+            _Context.Status.Add(status);
+            _Context.SaveChanges();
         }
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            Status buscado=_Context.Status.Find(id)!;
+            _Context.Status.Remove(buscado);
+            _Context.SaveChanges();
+
         }
 
         public List<Status> Listar()
         {
-            throw new NotImplementedException();
+            return _Context.Status.ToList();
         }
     }
 }

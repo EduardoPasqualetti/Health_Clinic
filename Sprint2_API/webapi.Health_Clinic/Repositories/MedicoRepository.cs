@@ -14,26 +14,23 @@ namespace webapi.Health_Clinic.Repositories
         }
         public void Atualizar(Guid id, Medico medico)
         {
-            Medico buscado = _Context.Medico.Find(id);
+            Medico buscado = _Context.Medico.Find(id)!;
             if (buscado != null)
             {
-                buscado.Nome= medico.Nome;
+                buscado.Nome = medico.Nome;
                 buscado.CRM = medico.CRM;
-                buscado.IdClinica= medico.IdClinica;
+                buscado.IdClinica = medico.IdClinica;
             }
-            _Context.Medico.Update(buscado);
+            _Context.Medico.Update(buscado!);
             _Context.SaveChanges();
         }
 
         public void Cadastrar(Medico medico)
-        {        
-            TipoUsuario tipoUsuario = new TipoUsuario();
-            if (tipoUsuario.Titulo == "Medico")
-            {
-                medico.IdMedico = Guid.NewGuid();
-                _Context.Medico.Add(medico);
-                _Context.SaveChanges();
-            }
+        {
+
+            medico.IdMedico = Guid.NewGuid();
+            _Context.Medico.Add(medico);
+            _Context.SaveChanges();
         }
 
         public void Deletar(Guid id)
@@ -45,7 +42,7 @@ namespace webapi.Health_Clinic.Repositories
 
         public List<Medico> Listar()
         {
-            return _Context.Medico.ToList();
+           return _Context.Medico.ToList();
         }
     }
 }

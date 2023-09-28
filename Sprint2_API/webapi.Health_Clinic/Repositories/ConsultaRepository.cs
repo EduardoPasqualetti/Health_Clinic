@@ -14,32 +14,56 @@ namespace webapi.Health_Clinic.Repositories
         }
         public void Atualizar(Guid id, Consulta consulta)
         {
-            throw new NotImplementedException();
+            Consulta buscada = _Context.Consulta.Find(id)!;
+            if (buscada != null)
+            {
+                buscada.Data = consulta.Data;
+                buscada.Horario= consulta.Horario;
+                buscada.IdMedico= consulta.IdMedico;
+                buscada.IdStatus = consulta.IdStatus;  
+            }
+            _Context.Consulta.Update(consulta);
+            _Context.SaveChanges();
         }
 
-        public Consulta BuscarPorMedico(Guid id)
+        public List<Consulta> BuscarPorMedico(Guid id)
         {
-            throw new NotImplementedException();
+            Consulta consulta = new Consulta();
+            if (consulta.IdMedico == id)
+            {
+                return _Context.Consulta.ToList();
+            }
+            return null;
         }
 
-        public Consulta BuscarPorPaciente(Guid id)
+        public List<Consulta> BuscarPorPaciente(Guid id)
         {
-            throw new NotImplementedException();
+            Consulta consulta = new Consulta();
+            if (consulta.IdPaciente == id)
+            {
+                return _Context.Consulta.ToList();
+            }
+            return null;
         }
 
         public void Cadastrar(Consulta consulta)
         {
-            throw new NotImplementedException();
+            consulta.IdConsulta = Guid.NewGuid();
+            _Context.Consulta.Add(consulta);
+            _Context.SaveChanges();
         }
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            Consulta buscada =_Context.Consulta.Find(id)!;
+            _Context.Consulta.Remove(buscada);
+            _Context.SaveChanges();
         }
 
         public List<Consulta> Listar()
         {
-            throw new NotImplementedException();
+            return _Context.Consulta.ToList();
         }
+
     }
 }

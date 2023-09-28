@@ -17,6 +17,11 @@ namespace webapi.Health_Clinic.Domains
         [Required(ErrorMessage ="CRM obrigatório!")]
         public string? CRM { get; set; }
 
+        [Required(ErrorMessage ="Informe a especialidade")]
+        public Guid IdEspecialidade { get; set; }
+
+        [ForeignKey(nameof(IdEspecialidade))]
+        public Especialidade? Especialidade { get; set; }
 
         [Required(ErrorMessage = "Informe o Usuario")]
         public Guid IdUsuario { get; set; }

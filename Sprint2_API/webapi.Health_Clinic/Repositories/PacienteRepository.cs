@@ -14,22 +14,39 @@ namespace webapi.Health_Clinic.Repositories
         }
         public void Atualizar(Guid id, Paciente paciente)
         {
-            throw new NotImplementedException();
+            Paciente buscado = _Context.Paciente.Find(id)!;
+            if (buscado != null)
+            {
+                buscado.Nome = paciente.Nome;
+                buscado.CPF = paciente.CPF;
+                buscado.Telefone = paciente.Telefone;
+                buscado.DataDeNascimento = paciente.DataDeNascimento;
+            }
+            _Context.Paciente.Update(buscado!);
+            _Context.SaveChanges();
         }
 
         public void Cadastrar(Paciente paciente)
         {
-            throw new NotImplementedException();
+
+            paciente.IdPaciente = Guid.NewGuid();
+            _Context.Paciente.Add(paciente);
+            _Context.SaveChanges();
+
+
         }
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            Paciente buscado = _Context.Paciente.Find(id)!;
+            _Context.Paciente.Remove(buscado!);
+            _Context.SaveChanges();
+
         }
 
         public List<Paciente> Listar()
         {
-            throw new NotImplementedException();
+            return _Context.Paciente.ToList();
         }
     }
 }
