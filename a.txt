@@ -1,0 +1,11 @@
+TipoUsuario - OK
+Status - Ok
+Usuario - + coisa
+Clinica - OK
+Especialidade - OK
+Paciente - OK
+Medico - erro cadastrar
+Consulta - 
+Prontuario -
+Comentario -
+Login - 

@@ -33,7 +33,7 @@ namespace webapi.Health_Clinic.Repositories
             {
                 return _Context.Consulta.ToList();
             }
-            return null;
+            return null!;
         }
 
         public List<Consulta> BuscarPorPaciente(Guid id)
@@ -43,7 +43,7 @@ namespace webapi.Health_Clinic.Repositories
             {
                 return _Context.Consulta.ToList();
             }
-            return null;
+            return null!;
         }
 
         public void Cadastrar(Consulta consulta)

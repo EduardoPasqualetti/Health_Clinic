@@ -12,24 +12,35 @@ namespace webapi.Health_Clinic.Repositories
         {
             _Context = new ClinicContext();
         }
-        public Comentario BuscarPorConsulta(Guid id)
+
+        public List<Comentario> BuscarPorConsulta(Guid id)
         {
-            throw new NotImplementedException();
+            Comentario comentario = new Comentario();
+            if (comentario.IdConsulta == id)
+            {
+                return _Context.Comentario.ToList();
+            }
+            return null!;
         }
 
         public void Cadastrar(Comentario comentario)
         {
-            throw new NotImplementedException();
+            comentario.IdComentario = Guid.NewGuid();
+            _Context.Comentario.Add(comentario);
+            _Context.SaveChanges();
         }
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            Comentario  buscado =_Context.Comentario.Find(id)!;
+            _Context.Comentario.Remove(buscado);
+            _Context.SaveChanges();
+
         }
 
         public List<Comentario> Listar()
         {
-            throw new NotImplementedException();
+            return _Context.Comentario.ToList();
         }
     }
 }

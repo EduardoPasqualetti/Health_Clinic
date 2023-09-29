@@ -14,27 +14,38 @@ namespace webapi.Health_Clinic.Repositories
         }
         public void Atualizar(Guid id, Prontuario prontuario)
         {
-            throw new NotImplementedException();
+            Prontuario buscado =_Context.Prontuario.Find(id)!;
+            if (buscado != null)
+            {
+                buscado.Descricao = prontuario.Descricao;
+            }
+            _Context.Prontuario.Update(buscado!);
+            _Context.SaveChanges();
         }
 
-        public Prontuario BuscarPorConsulta(Guid id)
+        public List<Prontuario> BuscarPorConsulta(Guid id)
         {
-            throw new NotImplementedException();
+            Prontuario prontuario = new Prontuario();
+            if (prontuario.IdConsulta == id)
+            {
+                return _Context.Prontuario.ToList();
+            }
+            return null!;
         }
 
         public void Cadastrar(Prontuario prontuario)
         {
-            throw new NotImplementedException();
+            prontuario.IdProntuario = Guid.NewGuid();
+            _Context.Prontuario.Add(prontuario);
+            _Context.SaveChanges();
         }
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            Prontuario buscado = _Context.Prontuario.Find(id)!;
+            _Context.Prontuario.Remove(buscado!);
+            _Context.SaveChanges();
         }
 
-        public List<Prontuario> Listar()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

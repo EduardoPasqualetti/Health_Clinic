@@ -8,5 +8,7 @@ namespace webapi.Health_Clinic.Interfaces
         List<Paciente> Listar();
         void Atualizar(Guid id, Paciente paciente);
         void Deletar(Guid id);
+
+        Paciente BuscarPorId(Guid id);
     }
 }

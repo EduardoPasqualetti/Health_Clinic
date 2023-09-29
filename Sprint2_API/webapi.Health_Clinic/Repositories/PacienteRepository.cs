@@ -26,6 +26,16 @@ namespace webapi.Health_Clinic.Repositories
             _Context.SaveChanges();
         }
 
+        public Paciente BuscarPorId(Guid id)
+        {
+           Paciente buscado = _Context.Paciente.FirstOrDefault(x => x.IdPaciente== id)!;
+            if (buscado != null)
+            {
+                return buscado;
+            }
+            return null!;
+        }
+
         public void Cadastrar(Paciente paciente)
         {
 

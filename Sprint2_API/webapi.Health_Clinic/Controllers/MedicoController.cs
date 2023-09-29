@@ -75,5 +75,20 @@ namespace webapi.Health_Clinic.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpGet("{id}")]
+        public IActionResult BuscarPorId(Guid id)
+        {
+            try
+            {
+                return Ok(_medico.BuscarPorId(id));
+
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

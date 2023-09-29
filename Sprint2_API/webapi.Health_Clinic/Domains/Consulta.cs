@@ -17,6 +17,8 @@ namespace webapi.Health_Clinic.Domains
 
         [Column(TypeName = "TIME")]
         [Required(ErrorMessage ="Horário da Consulta obrigatório!")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"hh\:mm")]
         public TimeSpan Horario { get; set; }
 
 

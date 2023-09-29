@@ -23,8 +23,18 @@ namespace webapi.Health_Clinic.Repositories
                 buscada.HorarioFechamento = clinica.HorarioFechamento;
                 buscada.Endereco = clinica.Endereco;
             }
-            _Context.Clinica.Update(buscada);
+            _Context.Clinica.Update(buscada!);
             _Context.SaveChanges();
+        }
+
+        public Clinica BuscarPorId(Guid id)
+        {
+            Clinica buscado = _Context.Clinica.FirstOrDefault(x => x.IdClinica == id)!;
+            if (buscado != null)
+            {
+                return buscado;
+            }
+            return null!;
         }
 
         public void Cadastrar(Clinica clinica)
@@ -36,7 +46,7 @@ namespace webapi.Health_Clinic.Repositories
 
         public void Deletar(Guid id)
         {
-            Clinica buscada = _Context.Clinica.Find(id);
+            Clinica buscada = _Context.Clinica.Find(id)!;
             _Context.Clinica.Remove(buscada);
             _Context.SaveChanges();
         }

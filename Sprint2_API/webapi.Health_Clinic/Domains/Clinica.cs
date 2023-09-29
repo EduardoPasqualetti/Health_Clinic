@@ -33,10 +33,14 @@ namespace webapi.Health_Clinic.Domains
 
         [Column(TypeName ="TIME")]
         [Required(ErrorMessage = "Horário de Abertura da Clínica obrigatório!")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"hh\:mm")]
         public TimeSpan HorarioAbertura { get; set; }
 
         [Column(TypeName ="TIME")]
         [Required(ErrorMessage = "Horário de Fechamento da Clínica obrigatório!")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"hh\:mm")]
         public TimeSpan HorarioFechamento { get; set; }
 
     }
