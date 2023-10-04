@@ -4,16 +4,339 @@
         <name>webapi.Health_Clinic</name>
     </assembly>
     <members>
-        <member name="T:webapi.Health_Clinic.Migrations.BD">
+        <member name="M:webapi.Health_Clinic.Controllers.ClinicaController.Post(webapi.Health_Clinic.Domains.Clinica)">
+            <summary>
+            Endpoint que aciona o metodo de Cadastrar uma Clinica
+            </summary>
+            <param name="clinica">Clinica a ser cadastrada</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ClinicaController.Listar">
+            <summary>
+            Endpoint que aciona o metodo de Listar Clinicas
+            </summary>
+            <returns>Lista da Clinicas</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ClinicaController.Put(System.Guid,webapi.Health_Clinic.Domains.Clinica)">
+            <summary>
+            Endpoint que aciona o metodo de Atualizar os dados de uma Clinica
+            </summary>
+            <param name="id">Id da Clinica a ser Atualizada</param>
+            <param name="clinica">Clinica atualizada</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ClinicaController.Delete(System.Guid)">
+            <summary>
+            Endpoint que aciona o metodo de Deletar uma Clinica
+            </summary>
+            <param name="id">Id da Clinica a ser deletada</param>
+            <returns>Status code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ClinicaController.BuscarPorId(System.Guid)">
+            <summary>
+            Endpoint que aciona o metodo de Buscar uma Clinica pelo seu Id
+            </summary>
+            <param name="id">Id da Clinica a ser buscada</param>
+            <returns>Clinica Encontrada</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ComentarioController.Post(webapi.Health_Clinic.Domains.Comentario)">
+            <summary>
+            Endpoint que aciona o metodo de Cadastrar um Comentario
+            </summary>
+            <param name="comentario">Comentario a ser cadastrado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ComentarioController.Get">
+            <summary>
+            Endpoint que aciona o metodo de Listar os Comentarios
+            </summary>
+            <returns>Lista dos Comentarios</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ComentarioController.Delete(System.Guid)">
+            <summary>
+            Endpoint que aciona o metodo de Deletar um Comentario
+            </summary>
+            <param name="id">Id do Comentario a ser Deletado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ComentarioController.BuscarConsulta(System.Guid)">
+            <summary>
+            Endpoint que aciona o metodo de Buscar comentarios de uma determinada Consulta
+            </summary>
+            <param name="id">Id da Consulta a buscar os comentarios dela</param>
+            <returns>Lista dos Comentarios da Consulta</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ConsultaController.Post(webapi.Health_Clinic.Domains.Consulta)">
+            <summary>
+            Endpoint que aciona o metodo de Cadastrar uma Consulta
+            </summary>
+            <param name="consulta">Consulta a ser Cadastrada</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ConsultaController.Get">
+            <summary>
+            Endpoint que aciona o metodo de Listar as Consultas
+            </summary>
+            <returns>Lista das Consultas</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ConsultaController.Put(System.Guid,webapi.Health_Clinic.Domains.Consulta)">
+            <summary>
+             Endpoint que aciona o metodo de Atualizar uma Consulta
+            </summary>
+            <param name="id">Id da clinica a ser Atualizada</param>
+            <param name="consulta">Clinica Atualizada</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ConsultaController.Delete(System.Guid)">
+            <summary>
+             Endpoint que aciona o metodo de Deletar uma Consulta
+            </summary>
+            <param name="id">Id da consulta a ser Deletada</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ConsultaController.ListarPorMedico(System.Guid)">
+            <summary>
+             Endpoint que aciona o metodo de Listar as Consultas realizadas por um determinado medico
+            </summary>
+            <param name="IdMedico">Id do Medico a buscar suas consultas</param>
+            <returns>Lista das consultas de um Medico</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ConsultaController.ListarPacientes(System.Guid)">
+            <summary>
+             Endpoint que aciona o metodo de Listar as Consultas de um determinado paciente
+            </summary>
+            <param name="id">Id do paciente a buscar suas consultas</param>
+            <returns>Lista das consultas de um Paciente</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.EspecialidadeController.Post(webapi.Health_Clinic.Domains.Especialidade)">
+            <summary>
+            Endpoint que aciona o metodo de Cadastrar uma Especialidade
+            </summary>
+            <param name="especialidade">Especialidade a ser cadastrada</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.EspecialidadeController.Get">
+            <summary>
+            Endpoint que aciona o metodo de Listar as Especialidades
+            </summary>
+            <returns>Lista das Especialidades</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.EspecialidadeController.Put(System.Guid,webapi.Health_Clinic.Domains.Especialidade)">
+            <summary>
+            Endpoint que aciona o metodo de Atualizar uma Especialidade
+            </summary>
+            <param name="id">Id da Especialidade a ser Atualizada</param>
+            <param name="especialidade">Especialidade Atualizada</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.EspecialidadeController.Delete(System.Guid)">
+            <summary>
+            Endpoint que aciona o metodo de Deletar uma Especialidade
+            </summary>
+            <param name="id">Id da Especialidade a ser Deletada</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.LoginController.Login(webapi.Health_Clinic.LoginViewmodel.LoginViewModel)">
+            <summary>
+            Endpoint que aciona o metodo de Login
+            </summary>
+            <param name="usuario">Usuario que ira fazer o Logn</param>
+            <returns>Token de Login</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.MedicoController.Post(webapi.Health_Clinic.Domains.Medico)">
+            <summary>
+            Endpoint que aciona o metodo de Cadastrar um Medico
+            </summary>
+            <param name="medico">Medico a ser Cadastrado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.MedicoController.Get">
+            <summary>
+            Endpoint que aciona o metodo de Listar os Medicos
+            </summary>
+            <returns>Lista dos Medicos</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.MedicoController.Put(System.Guid,webapi.Health_Clinic.Domains.Medico)">
+            <summary>
+            Endpoint que aciona o metodo de Atualizar um Medico
+            </summary>
+            <param name="id">Id do medico a ser Atualizado</param>
+            <param name="medico">MEdico Atualizado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.MedicoController.Delete(System.Guid)">
+            <summary>
+            Endpoint que aciona o metodo de Deletar um Medico
+            </summary>
+            <param name="id">Id do Medico a ser Deletado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.MedicoController.BuscarPorId(System.Guid)">
+            <summary>
+            Endpoint que aciona o metodo de Buscar um medico pelo seu Id
+            </summary>
+            <param name="id">Id do Medico a ser buscado</param>
+            <returns>Medico buscado</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.PacienteController.Post(webapi.Health_Clinic.Domains.Paciente)">
+            <summary>
+            Endpoint que aciona o metodo de Cadastrar um Paciente
+            </summary>
+            <param name="paciente">Paciente a ser Cadastrado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.PacienteController.Get">
+            <summary>
+            Endpoint que aciona o metodo de Listar os Pacientes
+            </summary>
+            <returns>Lista dos Pacientes</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.PacienteController.Put(System.Guid,webapi.Health_Clinic.Domains.Paciente)">
+            <summary>
+            Endpoint que aciona o metodo de Atualizar um Paciente
+            </summary>
+            <param name="id">Id do Paciente a ser Atualizado</param>
+            <param name="paciente">Paciente Atualizado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.PacienteController.Delete(System.Guid)">
+            <summary>
+            Endpoint que aciona o metodo de Deletar um Paciente
+            </summary>
+            <param name="id">Id do Paciente a ser Deletado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.PacienteController.BuscarPorId(System.Guid)">
+            <summary>
+            Endpoint que aciona o metodo de Buscar um Paciente pelo seu Id
+            </summary>
+            <param name="id">Id do paciente a ser Buscado</param>
+            <returns>Paciente Buscado</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ProntuarioController.Post(webapi.Health_Clinic.Domains.Prontuario)">
+            <summary>
+            Endpoint que aciona o metodo de Cadastrar um Prontuario
+            </summary>
+            <param name="prontuario"></param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ProntuarioController.Get">
+            <summary>
+            Endpoint que aciona o metodo de Listar os Prontuarios
+            </summary>
+            <returns>Lista dos prontuarios</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ProntuarioController.Put(System.Guid,webapi.Health_Clinic.Domains.Prontuario)">
+            <summary>
+            Endpoint que aciona o metodo de Atualizar um Prontuario
+            </summary>
+            <param name="id">Id do Prontuario a ser Deletado</param>
+            <param name="prontuario">Prontuario Atualizado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ProntuarioController.Delete(System.Guid)">
+            <summary>
+            Endpoint que aciona o metodo de Deletar um Prontuario
+            </summary>
+            <param name="id">Id do Prontuario a ser Deletado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.ProntuarioController.BuscarPorConsulta(System.Guid)">
+            <summary>
+            Endpoint que aciona o metodo de Buscar o Prontuario pelo Id da Consulta
+            </summary>
+            <param name="idConsulta">Id da Consulta a buscar o seu Prontuario</param>
+            <returns>Prontuario buscado</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.StatusController.Post(webapi.Health_Clinic.Domains.Status)">
+            <summary>
+            Endpoint que aciona o metodo de Cadastrar um Status
+            </summary>
+            <param name="status">Status Cadastrado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.StatusController.Get">
+            <summary>
+            Endpoint que aciona o metodo de Listar os Status
+            </summary>
+            <returns>Lista dos Status</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.StatusController.Put(System.Guid,webapi.Health_Clinic.Domains.Status)">
+            <summary>
+            Endpoint que aciona o metodo de Atualizar um Status
+            </summary>
+            <param name="id">Id do Status a ser Atualizado</param>
+            <param name="status">Status Atualizado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.StatusController.Delete(System.Guid)">
+            <summary>
+            Endpoint que aciona o metodo de Deletar um Status
+            </summary>
+            <param name="id">Id do Status a ser Deletado</param>
+            <returns>Status Code</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:webapi.Health_Clinic.Controllers.TipoUsuarioController.Post(webapi.Health_Clinic.Domains.TipoUsuario)" -->
+        <member name="M:webapi.Health_Clinic.Controllers.TipoUsuarioController.Get">
+            <summary>
+            Endpoint que aciona o metodo de listar os Tipos de Usuarios
+            </summary>
+            <returns>Lista dos Tipo de Usuarios</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.TipoUsuarioController.Put(System.Guid,webapi.Health_Clinic.Domains.TipoUsuario)">
+            <summary>
+            Endpoint que aciona o metodo de Atualizar um Tipo de Usuario
+            </summary>
+            <param name="id">Id do Tipo de Usuario a ser Atualizado</param>
+            <param name="tipoUsuario">Tipo de Usuario Atualizado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.TipoUsuarioController.Delete(System.Guid)">
+            <summary>
+            Endpoint que aciona o metodo de Deletar um Tipo de Usuario
+            </summary>
+            <param name="id">Id do Tipo de Usuario a ser Deletado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.UsuarioController.Post(webapi.Health_Clinic.Domains.Usuario)">
+            <summary>
+            Endpoint que aciona o metodo de Cadastrar um Usuario
+            </summary>
+            <param name="usuario"></param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.UsuarioController.BuscarPorCorpo(System.String,System.String)">
+            <summary>
+             Endpoint que aciona o metodo de Buscar um Usuario pelo seu Corpo(email e senha)
+            </summary>
+            <param name="email">Email do Usuario</param>
+            <param name="senha">Senha do Usuario</param>
+            <returns>Usuario buscado</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.UsuarioController.BuscarPorId(System.Guid)">
+            <summary>
+             Endpoint que aciona o metodo de Buscar um Usuario pelo seu Id
+            </summary>
+            <param name="id">Id do Usuario a ser Buscado</param>
+            <returns>usuario buscado</returns>
+        </member>
+        <member name="M:webapi.Health_Clinic.Controllers.UsuarioController.Deletar(System.Guid)">
+            <summary>
+             Endpoint que aciona o metodo de Deletar um Usuario
+            </summary>
+            <param name="id">Id do Usuario a ser Deletado</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="T:webapi.Health_Clinic.Migrations.bd">
             <inheritdoc />
         </member>
-        <member name="M:webapi.Health_Clinic.Migrations.BD.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:webapi.Health_Clinic.Migrations.bd.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:webapi.Health_Clinic.Migrations.BD.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:webapi.Health_Clinic.Migrations.bd.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:webapi.Health_Clinic.Migrations.BD.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:webapi.Health_Clinic.Migrations.bd.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

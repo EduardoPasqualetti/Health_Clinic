@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using webapi.Health_Clinic.Domains;
 using webapi.Health_Clinic.Interfaces;
 using webapi.Health_Clinic.Repositories;
@@ -17,7 +19,13 @@ namespace webapi.Health_Clinic.Controllers
             _consulta = new ConsultaRepository();
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de Cadastrar uma Consulta
+        /// </summary>
+        /// <param name="consulta">Consulta a ser Cadastrada</param>
+        /// <returns>Status Code</returns>
         [HttpPost]
+        //[Authorize(Roles = "Administrador")]
         public  IActionResult Post(Consulta consulta)
         {
             try
@@ -32,7 +40,12 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de Listar as Consultas
+        /// </summary>
+        /// <returns>Lista das Consultas</returns>
         [HttpGet]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Get()
         {
             try
@@ -46,7 +59,14 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
+        /// <summary>
+        ///  Endpoint que aciona o metodo de Atualizar uma Consulta
+        /// </summary>
+        /// <param name="id">Id da clinica a ser Atualizada</param>
+        /// <param name="consulta">Clinica Atualizada</param>
+        /// <returns>Status Code</returns>
         [HttpPut]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Put(Guid id,Consulta consulta)
         {
             try
@@ -61,7 +81,13 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
+        /// <summary>
+        ///  Endpoint que aciona o metodo de Deletar uma Consulta
+        /// </summary>
+        /// <param name="id">Id da consulta a ser Deletada</param>
+        /// <returns>Status Code</returns>
         [HttpDelete]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id)
         {
             try
@@ -76,12 +102,18 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
-        [HttpGet("{idMedico}")]
-        public IActionResult ListarPorMedico(Guid id)
+        /// <summary>
+        ///  Endpoint que aciona o metodo de Listar as Consultas realizadas por um determinado medico
+        /// </summary>
+        /// <param name="IdMedico">Id do Medico a buscar suas consultas</param>
+        /// <returns>Lista das consultas de um Medico</returns>
+        [HttpGet("Medico")]
+        //[Authorize(Roles = "Administrador,Medico")]
+        public IActionResult ListarPorMedico(Guid IdMedico)
         {
             try
             {
-                return Ok(_consulta.BuscarPorMedico(id));
+                return Ok(_consulta.BuscarPorMedico(IdMedico));
             }
             catch (Exception e)
             {
@@ -90,7 +122,13 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
-        [HttpGet("{idPaciente}")]
+        /// <summary>
+        ///  Endpoint que aciona o metodo de Listar as Consultas de um determinado paciente
+        /// </summary>
+        /// <param name="id">Id do paciente a buscar suas consultas</param>
+        /// <returns>Lista das consultas de um Paciente</returns>
+        [HttpGet("Paciente")]
+        //[Authorize(Roles = "Administrador,Paciente,Medico")]
         public IActionResult ListarPacientes(Guid id)
         {
             try

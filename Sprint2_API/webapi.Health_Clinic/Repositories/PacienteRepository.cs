@@ -28,7 +28,21 @@ namespace webapi.Health_Clinic.Repositories
 
         public Paciente BuscarPorId(Guid id)
         {
-           Paciente buscado = _Context.Paciente.FirstOrDefault(x => x.IdPaciente== id)!;
+           Paciente buscado = _Context.Paciente.Select(u => new Paciente
+           {
+               IdPaciente=u.IdPaciente,
+               Nome=u.Nome,
+               CPF=u.CPF,
+               Telefone=u.Telefone,
+               DataDeNascimento=u.DataDeNascimento,
+               IdUsuario = u.IdUsuario,
+               Usuario= new Usuario
+               {
+                   IdUsuario=u.IdUsuario,
+                   Email=u.Usuario.Email,
+               }
+
+           }).FirstOrDefault(x => x.IdPaciente== id)!;
             if (buscado != null)
             {
                 return buscado;

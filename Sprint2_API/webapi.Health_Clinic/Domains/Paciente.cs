@@ -23,6 +23,8 @@ namespace webapi.Health_Clinic.Domains
 
         [Column(TypeName ="DATE")]
         [Required(ErrorMessage ="Data de Nascimento obrigatório!")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
 
         public DateTime DataDeNascimento { get; set; }
 

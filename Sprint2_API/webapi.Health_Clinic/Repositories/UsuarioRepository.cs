@@ -82,5 +82,12 @@ namespace webapi.Health_Clinic.Repositories
             _Context.SaveChanges();
 
         }
+
+        public void Deletar(Guid id)
+        {
+            Usuario buscado =_Context.Usuario.Find(id)!;
+            _Context.Usuario.Remove(buscado);
+            _Context.SaveChanges();
+        }
     }
 }

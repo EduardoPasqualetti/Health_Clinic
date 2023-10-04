@@ -12,8 +12,8 @@ using webapi.Health_Clinic.Contexts;
 namespace webapi.Health_Clinic.Migrations
 {
     [DbContext(typeof(ClinicContext))]
-    [Migration("20230929122436_BD")]
-    partial class BD
+    [Migration("20231004112253_bd")]
+    partial class bd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -25,12 +25,7 @@ namespace webapi.Health_Clinic.Repositories
 
         public List<Prontuario> BuscarPorConsulta(Guid id)
         {
-            Prontuario prontuario = new Prontuario();
-            if (prontuario.IdConsulta == id)
-            {
-                return _Context.Prontuario.ToList();
-            }
-            return null!;
+            return _Context.Prontuario.Where(u => u.IdConsulta== id).ToList();
         }
 
         public void Cadastrar(Prontuario prontuario)
@@ -47,5 +42,9 @@ namespace webapi.Health_Clinic.Repositories
             _Context.SaveChanges();
         }
 
+        public List<Prontuario> Listar()
+        {
+            return _Context.Prontuario.ToList();
+        }
     }
 }

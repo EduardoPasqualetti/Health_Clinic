@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace webapi.Health_Clinic.Migrations
 {
     /// <inheritdoc />
-    public partial class BD : Migration
+    public partial class bd : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -15,12 +15,7 @@ namespace webapi.Health_Clinic.Repositories
 
         public List<Comentario> BuscarPorConsulta(Guid id)
         {
-            Comentario comentario = new Comentario();
-            if (comentario.IdConsulta == id)
-            {
-                return _Context.Comentario.ToList();
-            }
-            return null!;
+            return _Context.Comentario.Where(u => u.IdConsulta== id).ToList();
         }
 
         public void Cadastrar(Comentario comentario)

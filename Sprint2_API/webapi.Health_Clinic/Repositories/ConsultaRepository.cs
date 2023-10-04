@@ -28,22 +28,88 @@ namespace webapi.Health_Clinic.Repositories
 
         public List<Consulta> BuscarPorMedico(Guid id)
         {
-            Consulta consulta = new Consulta();
-            if (consulta.IdMedico == id)
+            return _Context.Consulta.Where(u => u.IdMedico == id).Select(u => new Consulta
             {
-                return _Context.Consulta.ToList();
-            }
-            return null!;
+                IdConsulta = u.IdConsulta,
+                Data=u.Data,
+                Horario=u.Horario,
+                IdMedico=u.IdMedico,
+                Medico = new Medico
+                {
+                    IdMedico=u.Medico!.IdMedico,
+                    Nome=u.Medico.Nome,
+                    CRM=u.Medico.CRM,
+                    IdEspecialidade=u.Medico.IdEspecialidade,
+                    Especialidade = new Especialidade
+                    {
+                        IdEspecialidade=u.Medico.Especialidade!.IdEspecialidade,
+                        Titulo=u.Medico.Especialidade.Titulo,
+                    },
+                    IdUsuario=u.Medico.IdUsuario,
+                    IdClinica=u.Medico.IdClinica,
+
+                },
+                IdPaciente=u.IdPaciente,
+                Paciente = new Paciente
+                {
+                    IdPaciente=u.Paciente!.IdPaciente,
+                    Nome=u.Paciente.Nome,
+                    CPF=u.Paciente.CPF,
+                    Telefone=u.Paciente.Telefone,
+                    DataDeNascimento=u.Paciente.DataDeNascimento,
+                    IdUsuario=u.Paciente.IdUsuario,
+                },
+                IdStatus=u.IdStatus,
+                Status = new Status
+                {
+                    IdStatus=u.Status!.IdStatus,
+                    StatusConsulta=u.Status.StatusConsulta,
+                }
+
+            }).ToList();
         }
 
         public List<Consulta> BuscarPorPaciente(Guid id)
         {
-            Consulta consulta = new Consulta();
-            if (consulta.IdPaciente == id)
+            return _Context.Consulta.Where(u => u.IdPaciente == id).Select(u => new Consulta
             {
-                return _Context.Consulta.ToList();
-            }
-            return null!;
+                IdConsulta = u.IdConsulta,
+                Data = u.Data,
+                Horario = u.Horario,
+                IdMedico = u.IdMedico,
+                Medico = new Medico
+                {
+                    IdMedico = u.Medico!.IdMedico,
+                    Nome = u.Medico.Nome,
+                    CRM = u.Medico.CRM,
+                    IdEspecialidade = u.Medico.IdEspecialidade,
+                    Especialidade = new Especialidade
+                    {
+                        IdEspecialidade = u.Medico.Especialidade!.IdEspecialidade,
+                        Titulo = u.Medico.Especialidade.Titulo,
+                    },
+                    IdUsuario = u.Medico.IdUsuario,
+                    IdClinica = u.Medico.IdClinica,
+
+                },
+                IdPaciente = u.IdPaciente,
+                Paciente = new Paciente
+                {
+                    IdPaciente = u.Paciente!.IdPaciente,
+                    Nome = u.Paciente.Nome,
+                    CPF = u.Paciente.CPF,
+                    Telefone = u.Paciente.Telefone,
+                    DataDeNascimento = u.Paciente.DataDeNascimento,
+                    IdUsuario = u.Paciente.IdUsuario,
+                },
+                IdStatus = u.IdStatus,
+                Status = new Status
+                {
+                    IdStatus = u.Status!.IdStatus,
+                    StatusConsulta = u.Status.StatusConsulta,
+                }
+
+            }).ToList();
         }
 
         public void Cadastrar(Consulta consulta)

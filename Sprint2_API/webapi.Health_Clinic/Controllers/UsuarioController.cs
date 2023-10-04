@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using webapi.Health_Clinic.Domains;
 using webapi.Health_Clinic.Interfaces;
 using webapi.Health_Clinic.Repositories;
@@ -18,7 +20,13 @@ namespace webapi.Health_Clinic.Controllers
             _usuario = new UsuarioRepository();
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de Cadastrar um Usuario
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         [HttpPost]
+        //[Authorize(Roles = "Administrador,Medico,Paciente")]
         public IActionResult Post(Usuario usuario)
         {
             try
@@ -33,6 +41,12 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
+        /// <summary>
+        ///  Endpoint que aciona o metodo de Buscar um Usuario pelo seu Corpo(email e senha)
+        /// </summary>
+        /// <param name="email">Email do Usuario</param>
+        /// <param name="senha">Senha do Usuario</param>
+        /// <returns>Usuario buscado</returns>
         [HttpGet]
         public IActionResult BuscarPorCorpo(string email, string senha)
         {
@@ -47,7 +61,13 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
+        /// <summary>
+        ///  Endpoint que aciona o metodo de Buscar um Usuario pelo seu Id
+        /// </summary>
+        /// <param name="id">Id do Usuario a ser Buscado</param>
+        /// <returns>usuario buscado</returns>
         [HttpGet("{id}")]
+       // [Authorize(Roles = "Administrador")]
         public IActionResult BuscarPorId(Guid id)
         {
             try
@@ -58,6 +78,27 @@ namespace webapi.Health_Clinic.Controllers
             {
 
                 return BadRequest(e.Message);
+            }
+        }
+
+        /// <summary>
+        ///  Endpoint que aciona o metodo de Deletar um Usuario
+        /// </summary>
+        /// <param name="id">Id do Usuario a ser Deletado</param>
+        /// <returns>Status Code</returns>
+        [HttpDelete]
+        //[Authorize(Roles = "Administrador")]
+        public IActionResult Deletar(Guid id)
+        {
+            try
+            {
+                _usuario.Deletar(id);
+                return Ok();
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

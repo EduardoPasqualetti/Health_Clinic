@@ -8,5 +8,6 @@ namespace webapi.Health_Clinic.Interfaces
         void Atualizar(Guid id, Prontuario prontuario);
         void Deletar(Guid id);
         List<Prontuario> BuscarPorConsulta(Guid id);
+        List<Prontuario> Listar();
     }
 }

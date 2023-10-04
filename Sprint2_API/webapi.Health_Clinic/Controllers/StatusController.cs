@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using webapi.Health_Clinic.Domains;
 using webapi.Health_Clinic.Interfaces;
 using webapi.Health_Clinic.Repositories;
@@ -17,7 +19,13 @@ namespace webapi.Health_Clinic.Controllers
             _status = new StatusRepository();
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de Cadastrar um Status
+        /// </summary>
+        /// <param name="status">Status Cadastrado</param>
+        /// <returns>Status Code</returns>
         [HttpPost]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Post(Status status)
         {
             try
@@ -32,7 +40,12 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de Listar os Status
+        /// </summary>
+        /// <returns>Lista dos Status</returns>
         [HttpGet]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Get()
         {
             try
@@ -46,7 +59,14 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de Atualizar um Status
+        /// </summary>
+        /// <param name="id">Id do Status a ser Atualizado</param>
+        /// <param name="status">Status Atualizado</param>
+        /// <returns>Status Code</returns>
         [HttpPut]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Put(Guid id,Status status)
         {
             try
@@ -61,7 +81,13 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de Deletar um Status
+        /// </summary>
+        /// <param name="id">Id do Status a ser Deletado</param>
+        /// <returns>Status Code</returns>
         [HttpDelete]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id)
         {
             try

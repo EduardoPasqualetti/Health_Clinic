@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using webapi.Health_Clinic.Domains;
 using webapi.Health_Clinic.Interfaces;
 using webapi.Health_Clinic.Repositories;
@@ -15,10 +17,16 @@ namespace webapi.Health_Clinic.Controllers
 
         public EspecialidadeController()
         {
-            _especialidade = new EspecialidadeRepository();    
+            _especialidade = new EspecialidadeRepository();
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de Cadastrar uma Especialidade
+        /// </summary>
+        /// <param name="especialidade">Especialidade a ser cadastrada</param>
+        /// <returns>Status Code</returns>
         [HttpPost]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Post(Especialidade especialidade)
         {
             try
@@ -33,7 +41,12 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de Listar as Especialidades
+        /// </summary>
+        /// <returns>Lista das Especialidades</returns>
         [HttpGet]
+        //[Authorize(Roles = "Administrador,Medico,Paciente")]
         public IActionResult Get()
         {
             try
@@ -47,7 +60,14 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de Atualizar uma Especialidade
+        /// </summary>
+        /// <param name="id">Id da Especialidade a ser Atualizada</param>
+        /// <param name="especialidade">Especialidade Atualizada</param>
+        /// <returns>Status Code</returns>
         [HttpPut]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Put(Guid id,Especialidade especialidade)
         {
             try
@@ -62,7 +82,14 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Endpoint que aciona o metodo de Deletar uma Especialidade
+        /// </summary>
+        /// <param name="id">Id da Especialidade a ser Deletada</param>
+        /// <returns>Status Code</returns>
         [HttpDelete]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id)
         {
             try

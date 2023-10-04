@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using webapi.Health_Clinic.Domains;
 using webapi.Health_Clinic.Interfaces;
 using webapi.Health_Clinic.Repositories;
@@ -17,7 +19,13 @@ namespace webapi.Health_Clinic.Controllers
             _medico = new MedicoRepository();
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de Cadastrar um Medico
+        /// </summary>
+        /// <param name="medico">Medico a ser Cadastrado</param>
+        /// <returns>Status Code</returns>
         [HttpPost]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Post(Medico medico)
         {
             try
@@ -32,7 +40,12 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de Listar os Medicos
+        /// </summary>
+        /// <returns>Lista dos Medicos</returns>
         [HttpGet]
+        //[Authorize(Roles = "Administrador,Medico")]
         public IActionResult Get()
         {
             try
@@ -46,7 +59,14 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de Atualizar um Medico
+        /// </summary>
+        /// <param name="id">Id do medico a ser Atualizado</param>
+        /// <param name="medico">MEdico Atualizado</param>
+        /// <returns>Status Code</returns>
         [HttpPut]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Put(Guid id, Medico medico)
         {
             try
@@ -61,7 +81,13 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de Deletar um Medico
+        /// </summary>
+        /// <param name="id">Id do Medico a ser Deletado</param>
+        /// <returns>Status Code</returns>
         [HttpDelete]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id)
         {
             try
@@ -76,7 +102,13 @@ namespace webapi.Health_Clinic.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de Buscar um medico pelo seu Id
+        /// </summary>
+        /// <param name="id">Id do Medico a ser buscado</param>
+        /// <returns>Medico buscado</returns>
         [HttpGet("{id}")]
+        //[Authorize(Roles = "Administrador,Medico")]
         public IActionResult BuscarPorId(Guid id)
         {
             try
